@@ -78,7 +78,7 @@ class Running(Training):
 class SportsWalking(Training):
     """Тренировка: спортивная ходьба."""
     CALORIES_WEIGHT_MULTIPLIER = 0.035
-    CALORIES_MEAN_SPEED_SH = 0.029
+    CALORIES_SPEED_HEIGHT_MULTIPLIER = 0.029
     KMH_IN_MSEС = 0.278
     CM_IN_M = 100
 
@@ -98,7 +98,7 @@ class SportsWalking(Training):
         calorie_consumption = ((self.CALORIES_WEIGHT_MULTIPLIER
                                * self.weight
                                + (speed_in_sec ** 2 / height_in_m)
-                               * self.CALORIES_MEAN_SPEED_SH
+                               * self.CALORIES_SPEED_HEIGHT_MULTIPLIER
                                * self.weight)
                                * self.duration * self.MIN_IN_H)
         return calorie_consumption
