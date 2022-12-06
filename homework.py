@@ -77,7 +77,7 @@ class Running(Training):
 
 class SportsWalking(Training):
     """Тренировка: спортивная ходьба."""
-    CALORIES_MEAN_SPEED_MULTI = 0.035
+    CALORIES_WEIGHT_MULTIPLIER = 0.035
     CALORIES_MEAN_SPEED_SH = 0.029
     KMH_IN_MSEС = 0.278
     CM_IN_M = 100
@@ -95,7 +95,7 @@ class SportsWalking(Training):
         """Получить количество затраченных калорий."""
         speed_in_sec = self.get_mean_speed() * self.KMH_IN_MSEС
         height_in_m = self.height / self.CM_IN_M
-        calorie_consumption = ((self.CALORIES_MEAN_SPEED_MULTI
+        calorie_consumption = ((self.CALORIES_WEIGHT_MULTIPLIER
                                * self.weight
                                + (speed_in_sec ** 2 / height_in_m)
                                * self.CALORIES_MEAN_SPEED_SH
@@ -108,6 +108,7 @@ class Swimming(Training):
     """Тренировка: плавание."""
     LEN_SW_1 = 1.1
     LEN_SW_2 = 2
+    LEN_STEP = 1.38
 
     def __init__(self,
                  action: int,
